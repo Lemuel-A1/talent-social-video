@@ -1,0 +1,54 @@
+{
+  "_note": "The house caption and type style as data. Values come from IDENTITY.md. Tools read --font, --size, --y, --gold from here; chat-tier users copy the values into CapCut or Canva.",
+  "canvas": { "width_px": 1080, "height_px": 1920, "fps": 30 },
+  "fonts": {
+    "headline": { "family": "Poppins", "weight": "ExtraBold", "licence": "OFL", "case": "upper" },
+    "captions": { "family": "Poppins", "weight": "{{NEEDS_VERIFICATION}}", "licence": "OFL", "case": "sentence" },
+    "file_path": "{{FONT_PATH}}"
+  },
+  "colours": {
+    "gold": "F5B533",
+    "charcoal": "181E2A",
+    "caption_text": "FFFFFF",
+    "off_white": "{{NEEDS_VERIFICATION}}",
+    "purple": "only inside the Vetted mark",
+    "status": "gold and charcoal are 'about' values, to confirm in Canva"
+  },
+  "captions": {
+    "size_px": 64,
+    "size_ratio_of_width": 0.059,
+    "y_position_ratio": 0.62,
+    "y_range_ratio": [0.55, 0.70],
+    "align": "centre",
+    "text_colour": "FFFFFF",
+    "shadow": "soft, dark, no hard outline",
+    "min_words_per_chunk": 2,
+    "max_words_per_chunk": 5,
+    "max_gold_words_per_chunk": 1,
+    "case": "sentence"
+  },
+  "headline": {
+    "y_range_ratio": [0.20, 0.35],
+    "max_lines": 2,
+    "max_gold_words": 1,
+    "case": "upper",
+    "visible_from_s": 0,
+    "visible_until": "the sting"
+  },
+  "labels": {
+    "name": { "text_colour": "FFFFFF", "background": "181E2A" },
+    "topic": { "text_colour": "F5B533" },
+    "y_range_ratio": [0.72, 0.79],
+    "show_for_s": 3,
+    "note": "Band sits between the caption band and the bottom safe zone."
+  },
+  "safe_zones_px": { "top": 220, "bottom": 380, "right": 140 },
+  "usable_area_px": { "x_min": 0, "x_max": 940, "y_min": 220, "y_max": 1540 },
+  "brand_mark": { "text": "Talent Social · powered by Vetted", "corner": "top-left", "y_min_px": 220, "from": "after the sting", "series_bug_below_mark": true },
+  "motion": {
+    "punch_in_percent": [10, 15],
+    "punch_in_every_s": [3, 5],
+    "section_transition": "gold band wipe, about 0.3 s, between sections only"
+  },
+  "cta_card": { "held_s": 3, "bottom_edge_max_px": 1540 }
+}
