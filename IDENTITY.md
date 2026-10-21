@@ -86,7 +86,7 @@ Judge by views, average watch time, shares, saves and follows in the Instagram a
 | Size and rate | 1080x1920, 30 fps | `measure.py` |
 | Integrated loudness | -14 LUFS; accept -15 to -13 | `measure.py` |
 | True peak | at or below -1 dBFS | `measure.py` |
-| Runtime | advice 45 to 75 s; game 60 to 90 s; teaser 12 to 25 s | `measure.py --format` |
+| Runtime | advice 45 to 75 s; game 60 to 90 s; teaser 12 to 25 s; talk clip 20 to 45 s | `measure.py --format` |
 | First spoken line (voice formats) | starts within 2 s; target 0 to 0.3 s | transcript |
 | First frame | not black, not a logo | `measure.py`, contact sheet |
 | Silences | none over 0.4 s, unless the brief marks a deliberate beat | `measure.py` |

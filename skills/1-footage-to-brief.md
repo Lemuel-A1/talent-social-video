@@ -19,7 +19,7 @@ Read `../IDENTITY.md` first.
 2. **[agent] Transcribe.** Run `$STT_PYTHON tools/transcribe.py <video> <out_dir> --model small.en`. Use `transcript.json` for word times and `transcript.txt` for reading. In chat, skip this step and use the uploaded transcript.
 3. **[chat] List the 3 strongest candidate hook lines.** Each is verbatim, with its source time. Score each 1 to 3 for surprise, specificity and usefulness. Pick the best line, not the first. For a game episode, the best clash or stake. For a teaser, the claim.
 4. **[chat] Name the playbook chapter, persona and career stage** (land the job, succeed in the job, grow, switch, hire well). Advice that does not come from a chapter of our own playbooks is not shot or posted. If no chapter exists yet, say so and ask Lemuel or Tobi for the framework.
-5. **[chat] Choose the format.** Use the format pages in `../formats/`. If the footage fits none, say so. Do not force a fit. A talk clip is coming; do not draft one yet.
+5. **[chat] Choose the format.** Use the format pages in `../formats/`. If the footage fits none, say so. Do not force a fit. For panels, interviews and stage moments, use `../formats/talk-clip.md`.
 6. **[chat] For a long recording, list up to 5 clips.** One idea per clip, each with source start and end and its own hook line. Brief the strongest first.
 7. **[chat] Plan the structure.** Fill the beat table from the format page. Source times beside output times.
 8. **[chat] Draft the headline for frame 1.** Caps, 2 lines at most, one gold word. Check it works with the sound off. Every number must be in the speaker's own words.

@@ -6,6 +6,7 @@ Version: 2026-10-22 (source unversioned). Start with the ROUTER_PROMPT section b
 
 - README.md
 - START-HERE.md
+- EDIT-TEST.md
 - ROUTER_PROMPT.md
 - IDENTITY.md
 - CONFIG.md
@@ -14,6 +15,7 @@ Version: 2026-10-22 (source unversioned). Start with the ROUTER_PROMPT section b
 - formats/event-teaser.md
 - formats/quick-formats.md
 - formats/founder-story.md
+- formats/talk-clip.md
 - skills/0-shoot-plan.md
 - skills/1-footage-to-brief.md
 - skills/2-rough-cut.md
@@ -28,6 +30,7 @@ Version: 2026-10-22 (source unversioned). Start with the ROUTER_PROMPT section b
 - templates/post-copy.md
 - templates/performance-log.csv
 - templates/caption-style.json
+- templates/edit-test-report.md
 - examples/REFERENCES.md
 - examples/BASELINE-LESSONS.md
 - tools/README.md
@@ -153,6 +156,61 @@ At the end the chat asks "Any feedback to log?" Say what you would change. Copy 
 
 ---
 
+<!-- FILE: EDIT-TEST.md -->
+# FILE: EDIT-TEST.md
+
+# Edit test: turn last event's footage into 3 short clips
+
+## Message Lemuel can send
+> Hi! We're testing our new video-editing kit before next week's event. Could you take 3 clips from the last event's folder (panel, interviews) and edit them with the guide below? Nothing gets posted: it's a private test, and your notes on what was confusing matter as much as the videos. About 45 minutes for the first clip, less after. Guide: https://github.com/Lemuel-A1/talent-social-video/blob/main/EDIT-TEST.md
+
+## What this is
+A private test of the Talent Social video kit. You use a normal chat (ChatGPT or Claude) plus CapCut. Nothing is posted. Send everything back to Lemuel.
+
+## Have ready
+- The folder with the last event's footage (panel, interviews, clips).
+- ChatGPT or Claude in a browser, with web access switched on.
+- CapCut (desktop is easier than mobile for this).
+- The report form: https://github.com/Lemuel-A1/talent-social-video/blob/main/templates/edit-test-report.md
+
+## Before you start: consent
+- Panel speakers: use their clips only if their speaker form is on file. Interviews: only if they signed a release. Not sure? Ask Lemuel first.
+- Do not use close-ups of audience members.
+
+## Step 1: choose 3 clips
+One from the panel, one interview, and one other moment. In each, find a stretch of 1 to 3 minutes where one person makes one clear point.
+
+## Step 2: get a transcript with times
+In CapCut: import the clip, add auto captions, and export them as an SRT file if your version offers it (SRT keeps a time on every line). If you can only copy plain text, write the start time of the key line next to it.
+
+## Step 3: open the kit in your chat
+Paste this, then upload the transcript:
+> Read https://raw.githubusercontent.com/Lemuel-A1/talent-social-video/main/KIT.md and follow its router prompt. I want to make a talk clip from the transcript I'm uploading.
+
+If the chat says it cannot open the link, open the link yourself, save the page as `KIT.md`, and upload it with the transcript.
+
+## Step 4: answer its questions
+It will ask who is speaking, their role, consent, which account it is for, and the CTA. Use "follow" as the CTA for this test.
+
+## Step 5: cut it in CapCut
+The chat gives you a brief, an edit list (which seconds to keep, in order), the caption text and the on-screen text with timings. Build the cut from those. If Lemuel has shared the overlay pack (a folder called `capcut-pack`), use its headline, label, brand mark and CTA card; otherwise use plain CapCut text in the same places. Keep text out of the top and bottom of the screen.
+
+## Step 6: export and check
+Export 1080x1920. Go through the QC checklist the chat gives you. If you cannot measure loudness, say so in the report; Lemuel's side will measure it.
+
+## Step 7: send back
+For each clip: the exported video, the chat's brief and edit list (copy and paste is fine), and the filled report form.
+
+## What good looks like
+- The key line is heard in the first 2 seconds, and the same words are on screen.
+- One idea, one speaker, 20 to 45 seconds.
+- Captions readable on a phone; no text at the very top or bottom.
+- The speaker's name and role are right.
+- The voice is clear and not too quiet.
+
+
+---
+
 <!-- FILE: ROUTER_PROMPT.md -->
 # FILE: ROUTER_PROMPT.md
 
@@ -168,7 +226,7 @@ You help make Talent Social short videos for Instagram and other platforms. Tale
 
 ## What to ask for
 1. **The transcript.** Exported text from CapCut or Instagram auto-captions, or a pasted transcript. With times if possible (SRT is best). You cannot watch a video: do not ask for one.
-2. **The format:** advice episode, game episode, event teaser, or "suggest one". If the footage fits none, say so. Also available: quick formats (`formats/quick-formats.md`) and the founder story (`formats/founder-story.md`). Coming later: talk clip (panels and Recruiters Ring). Not yet available: numbered series, news desk, making-of, build-in-public.
+2. **The format:** advice episode, game episode, event teaser, talk clip (panels, interviews, stage: `formats/talk-clip.md`), or "suggest one". If the footage fits none, say so. Also available: quick formats (`formats/quick-formats.md`) and the founder story (`formats/founder-story.md`). Not yet available: numbered series, news desk, making-of, build-in-public.
 3. **People featured and consent.** For each person: how they spell their name, their role, and whether they are a public figure, have given written OK, or have given none. No consent and not a public figure: they are not in the clip. For event teasers, only faces that agreed.
 4. **The account** it will post from (see `CONFIG.md`) and who the collaborators are.
 5. **The CTA plan.** Default: "Follow for part 2" (episodes) or the event link (teaser). A game episode asks "Who do you think won?". A comment keyword only if a named person will send the replies.
@@ -313,7 +371,7 @@ Judge by views, average watch time, shares, saves and follows in the Instagram a
 | Size and rate | 1080x1920, 30 fps | `measure.py` |
 | Integrated loudness | -14 LUFS; accept -15 to -13 | `measure.py` |
 | True peak | at or below -1 dBFS | `measure.py` |
-| Runtime | advice 45 to 75 s; game 60 to 90 s; teaser 12 to 25 s | `measure.py --format` |
+| Runtime | advice 45 to 75 s; game 60 to 90 s; teaser 12 to 25 s; talk clip 20 to 45 s | `measure.py --format` |
 | First spoken line (voice formats) | starts within 2 s; target 0 to 0.3 s | transcript |
 | First frame | not black, not a logo | `measure.py`, contact sheet |
 | Silences | none over 0.4 s, unless the brief marks a deliberate beat | `measure.py` |
@@ -848,6 +906,70 @@ Before export: watch it on mute (captions and picture tell the story); no unappr
 
 ---
 
+<!-- FILE: formats/talk-clip.md -->
+# FILE: formats/talk-clip.md
+
+# Format: talk clip (panels, interviews, stage moments)
+
+Read `../IDENTITY.md` first. Numbers there win.
+
+## Purpose
+Turn one idea from a panel, an interview or a stage moment into a short clip someone who was not in the room still wants to watch. One speaker, one idea, their own words.
+
+## Length
+20 to 45 s. Aim for 30 to 40 s.
+
+## Choosing the line (do this before cutting)
+- Pick the most surprising or most useful line in the recording, not the first one. It can come from anywhere in the recording.
+- It must make sense with no context, and it must be one idea.
+- The speaker has consented (the speaker form for panelists, a release for interviews). No consent, no clip.
+- No names of third parties unless they are public figures. No claim about Vetted except the approved line in IDENTITY.
+- No audience faces unless those people agreed.
+- From a 40-minute panel, take up to 5 clips per speaker, ranked. Brief the best first.
+
+## Shape, beat by beat
+| Output time | Beat | On screen | Sound |
+|---|---|---|---|
+| 0.0 to 3.0 | **Hook**: the chosen line, in the speaker's words | Speaker, tight frame. Headline from frame 1 with the same words (or a faithful short version), one gold word | Voice from 0 to 0.3 s |
+| 3.0 to 5.0 | The speaker finishes the thought, if needed | Speaker | Voice |
+| 5.0 to 8.0 | **Label** (at the first full sentence after the hook) | `{NAME}` over `{ROLE}` exactly as the speaker form or event copy gives them | Voice |
+| 8.0 to 32.0 | **The idea**: the reason, the example, the how | Punch-in or cutaway every 3 to 5 s (other camera angle, the speaker's hands, the room wide) | Voice; one whoosh at most |
+| 32.0 to 36.0 | **Landing line**: the sentence that closes the idea | Speaker, still frame | Voice |
+| 36.0 to 39.0 | **CTA** | CTA card held 3 s | The CTA is said only if the speaker said something that works as one; otherwise shown only, with the caption |
+
+The sting is optional in talk clips: use it only if the hook ends cleanly at a sentence break.
+
+## Hook patterns (fill with the speaker's own line)
+1. **Stake:** a line that names a cost or a risk the viewer has.
+2. **Contradiction:** a line that disagrees with common advice.
+3. **Number:** a number the speaker said themselves, with its unit.
+4. **Answered question:** cut the question from the moderator into the first second, then the speaker's answer.
+Never write a hook line the speaker did not say. If no line works, the recording does not have a clip: say so.
+
+## Captions, labels and overlays
+- Captions per IDENTITY: sentence case, 2 to 5 words, 55 to 70% height, at most one gold word.
+- Overlays from the overlay pack: `headline` (0 s to the label), `brand-mark` (from 5 s), `label` (3 s), `cta-card` (last 3 s). Plain CapCut text in the same positions works if the pack is not to hand.
+- Nothing in the top 220 px, the bottom 380 px or the right 140 px.
+
+## Audio for room recordings
+- Use the best mic channel (the lav or the desk mic), not the camera's built-in mic.
+- Reduce room noise lightly; do not make the voice sound underwater.
+- Master to -14 LUFS (accept -15 to -13), true peak at or below -1 dBFS.
+
+## QC thresholds
+Runtime 20 to 45 s. First spoken word within 2 s. First frame not black and not an empty room. Label matches the speaker form. Consent recorded. One idea, one CTA. Full table: `../IDENTITY.md` section 12.
+
+## Worked example: a partner roundtable recap (baseline)
+- **What it did:** opened on an empty room and the venue banner; the first person appeared at about 5 s; a strong spoken line about AI making good work easier sat at 1 s, uncaptioned, under b-roll; no names, no captions, no CTA.
+- **What v1 would do:** cut straight to the speaker saying that line at 0 s, with it as the headline; label the speaker at 5 s; keep the best 30 s of the answer with two cutaways; end on the landing line and a follow CTA card.
+
+## Reference posts (patterns, not copy)
+- **thediaryofaceopodcast:** cold open on the most surprising line; a big headline with one coloured word; then small sentence-case captions.
+- **hormozi:** one idea per clip, plain frame, quiet captions, no filler.
+
+
+---
+
 <!-- FILE: skills/0-shoot-plan.md -->
 # FILE: skills/0-shoot-plan.md
 
@@ -925,7 +1047,7 @@ Read `../IDENTITY.md` first.
 2. **[agent] Transcribe.** Run `$STT_PYTHON tools/transcribe.py <video> <out_dir> --model small.en`. Use `transcript.json` for word times and `transcript.txt` for reading. In chat, skip this step and use the uploaded transcript.
 3. **[chat] List the 3 strongest candidate hook lines.** Each is verbatim, with its source time. Score each 1 to 3 for surprise, specificity and usefulness. Pick the best line, not the first. For a game episode, the best clash or stake. For a teaser, the claim.
 4. **[chat] Name the playbook chapter, persona and career stage** (land the job, succeed in the job, grow, switch, hire well). Advice that does not come from a chapter of our own playbooks is not shot or posted. If no chapter exists yet, say so and ask Lemuel or Tobi for the framework.
-5. **[chat] Choose the format.** Use the format pages in `../formats/`. If the footage fits none, say so. Do not force a fit. A talk clip is coming; do not draft one yet.
+5. **[chat] Choose the format.** Use the format pages in `../formats/`. If the footage fits none, say so. Do not force a fit. For panels, interviews and stage moments, use `../formats/talk-clip.md`.
 6. **[chat] For a long recording, list up to 5 clips.** One idea per clip, each with source start and end and its own hook line. Brief the strongest first.
 7. **[chat] Plan the structure.** Fill the beat table from the format page. Source times beside output times.
 8. **[chat] Draft the headline for frame 1.** Caps, 2 lines at most, one gold word. Check it works with the sound off. Every number must be in the speaker's own words.
@@ -1478,6 +1600,57 @@ date_posted,format,episode,account,collaborators,hook_line,runtime_s,cover_time_
   },
   "cta_card": { "held_s": 3, "bottom_edge_max_px": 1540 }
 }
+
+
+---
+
+<!-- FILE: templates/edit-test-report.md -->
+# FILE: templates/edit-test-report.md
+
+# Edit test report (one per clip)
+
+- Your name:
+- Date:
+
+## Clip
+- Source file name:
+- Source length / finished length:
+- Format used (talk clip, advice episode, other):
+- Speaker and consent: speaker form on file / release signed / not sure (ask Lemuel)
+
+## Time spent (minutes)
+| Step | Minutes |
+|---|---|
+| Choosing the clip | |
+| Getting the transcript | |
+| Chat: brief and edit list | |
+| Cutting in CapCut | |
+| Captions and on-screen text | |
+| Audio and export | |
+| QC checklist | |
+
+## Where the kit or the chat was unclear or wrong
+Quote the instruction, then say what happened.
+-
+
+## What you had to guess
+-
+
+## Scores (1 = poor, 5 = great)
+| Could I follow it? | Hook strength | Captions | Brand look | Audio |
+|---|---|---|---|---|
+| | | | | |
+
+## QC verdict from the chat
+READY / FIX / DO NOT POST, and the failures it listed:
+
+## Three questions
+1. What slowed you down most?
+2. What would you change in the kit?
+3. Would you use this every week? Why or why not?
+
+## Facts to confirm with Lemuel
+Names, roles and consent you were not sure about:
 
 
 ---
