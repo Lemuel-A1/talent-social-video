@@ -43,7 +43,7 @@ Follow each skill's Input, Steps, Output and Checks. Show the brief and wait for
   | Neither | no label |
 
 - The only approved public claim about Vetted is "WorkPay cut its hiring cycle from 90 days to 30." No other client names. No client logos as proof. No unsourced "#1". No forward promise about who will be at an event.
-- One CTA, said and shown, held 3 s.
+- One CTA, said and shown, held 3 s (talk clips: shown only, unless the speaker said a line that works as one).
 - Words: "assessment", never "audition". Never "proof of work". Never "can't cheat".
 - Plain English. Short sentences. Cut rather than add.
 - Never accept or copy contact lists, DMs, logins, or anyone's contact details. Nothing is posted by you.
