@@ -1,6 +1,6 @@
 # Talent Social video kit (all files in one)
 
-Version: 2026-10-22 (source 4b6fe90). Start with the ROUTER_PROMPT section below. File references such as `IDENTITY.md`, `formats/advice-episode.md` or `skills/6-qc-check.md` point to the sections of this file with that name. The agent-tier scripts (tools/*.py, tools/*.sh) are in the repo, not in this file: a chat does not need them.
+Version: 2026-10-22 (source 95c489c+uncommitted). Start with the ROUTER_PROMPT section below. File references such as `IDENTITY.md`, `formats/advice-episode.md` or `skills/6-qc-check.md` point to the sections of this file with that name. The agent-tier scripts (tools/*.py, tools/*.sh) are in the repo, not in this file: a chat does not need them.
 
 ## Contents
 
@@ -24,6 +24,7 @@ Version: 2026-10-22 (source 4b6fe90). Start with the ROUTER_PROMPT section below
 - skills/5-audio-and-master.md
 - skills/6-qc-check.md
 - skills/7-post-and-log.md
+- skills/8-batch-plan.md
 - templates/shoot-plan.md
 - templates/brief.md
 - templates/edl.csv
@@ -72,7 +73,7 @@ Seven plain markdown skills, three format pages, and a few small tools. They tur
 
 ## The order
 
-Before a shoot: skill 0 → the shoot plan. Then: transcript → skill 1 → skill 2 → skill 3 → skill 4 → a person builds the overlays → skill 5 → skill 6 → a person posts → skill 7.
+Before a shoot: skill 0 → the shoot plan. Then: transcript → skill 1 → skill 2 → skill 3 → skill 4 → a person builds the overlays → skill 5 → skill 6 → a person posts → skill 7. Many files at once, or a whole folder: skill 8 first (the batch plan).
 
 ## Two tiers
 
@@ -234,7 +235,7 @@ You help make Talent Social short videos for Instagram and other platforms. Tale
 7. For a teaser: the event name, date, area and link. If the person has not given them, leave `{{...}}` placeholders.
 
 ## The order
-Planning a shoot day first? Use skill 0 (`skills/0-shoot-plan.md`): it gives a shoot plan on `templates/shoot-plan.md`. Then, for each format folder of footage: transcript → skill 1 (brief) → skill 2 (edit list) → skill 3 (captions and type) → skill 4 (overlay list) → the person builds in CapCut or Canva → skill 5 (sound and master) → skill 6 (QC verdict) → the person posts → skill 7 (post copy and log).
+Pointed at a whole folder of footage, or asked to edit everything? Use skill 8 (`skills/8-batch-plan.md`) before anything else. Planning a shoot day first? Use skill 0 (`skills/0-shoot-plan.md`): it gives a shoot plan on `templates/shoot-plan.md`. Then, for each format folder of footage: transcript → skill 1 (brief) → skill 2 (edit list) → skill 3 (captions and type) → skill 4 (overlay list) → the person builds in CapCut or Canva → skill 5 (sound and master) → skill 6 (QC verdict) → the person posts → skill 7 (post copy and log).
 
 Follow each skill's Input, Steps, Output and Checks. Show the brief and wait for an OK before the edit list.
 
@@ -304,27 +305,40 @@ Two kinds of video, two jobs:
 - Words: "assessment", never "audition". Never "proof of work". Never "can't cheat".
 - Plain, warm, short sentences. No hype words, no false urgency.
 
-## 3. Colour
-| Use | Value | Status |
-|---|---|---|
-| Accent (gold) | about #F5B533 | to confirm in Canva |
-| Base (charcoal) | about #181E2A | to confirm in Canva |
-| Off-white | {{NEEDS_VERIFICATION}} | pick one hex in Canva |
-| Purple | only inside the Vetted mark | |
+## 3. Colour (brand v2, measured from talentsocial.network on 22 Oct 2026)
+| Use | Value |
+|---|---|
+| Page and base (warm black) | #131210; raised #191715 and #1E1C1A |
+| Text | off-white #F6F5F4; muted #A9A39E |
+| Gold on cards and the payoff phrase | #D8B579 |
+| Gold on video (small text, emphasis words, any button) | #E2B05A (the site's button fill; it reads better over moving footage) |
+| Dark text on gold | #181410 |
+| Purple | only inside the Vetted mark |
 
-- Gold has one job: emphasis. At most one gold word in a caption chunk. Besides that word, only these may be gold: the active tab, the topic line of a label, the CTA button. Never more than three gold items on screen at once.
+- Gold has one job: emphasis. In plain captions, one word per phrase. In kinetic captions, stressed words, numbers and the one big word (see section 4). Besides captions, only the role line of a name card and the payoff phrase may be gold. Never more than four gold items on screen at once.
 - Never gold backgrounds. Never every word.
-- Yellow emphasis is the short-form convention. Our gold is a shade of it, chosen to sit with warm Nairobi footage and the purple parent mark.
+- Old values (#F5B533 gold, #181E2A navy) were guesses from reels. Do not use them in new work.
+- Colour grade: the team's `NTS_Signature` LUT for the Sony camera (S-Log3), a light trim on the Rec.709 interview camera. The warm look matches the site's warm blacks.
 
-## 4. Type
-- **Headline (frame 1):** heavy geometric sans, Poppins ExtraBold (OFL licence), caps, at most 2 lines, 20 to 35% of frame height, one gold word. Every line fits inside the safe zones.
-- **Captions:** sentence case (capital letter only at the start of a spoken sentence and for names; a chunk that continues a sentence starts lower case), 2 to 5 words per chunk, white with a soft shadow, 55 to 70% of frame height, at most one gold word per chunk.
-- **Labels:** name in white on charcoal; topic or role in gold. Shown on first appearance of a speaker, about 3 s.
+## 4. Type (brand v2)
+- **Face:** Inter Tight (open licence, Google Fonts) for setup lines, captions, cards and the outro. Files: `InterTight[wght].ttf` and `InterTight-Italic[wght].ttf`, kept outside the repo (see `CONFIG.md`). Weights: 600 normal, 700 names, 800 stress, 900 numbers.
+- **Payoff face:** a gold serif italic for the one word or phrase that carries the idea: Didot Italic where macOS has it (the team's confirmed taste), Inter Tight Italic elsewhere. A Google serif such as Instrument Serif is the portable choice (open decision).
+- **Headline (static):** sentence case, Inter Tight SemiBold, tight tracking, left aligned at a 92 px margin, at most 2 lines plus a gold payoff line, 26 to 40% of frame height, over a soft warm-black gradient (no boxes). Use it only when the first spoken line is not already on screen as captions, or when the framing is editorial (a question the speakers did not say).
+- **Captions have three modes: none, plain, kinetic** (rules in `skills/3-captions-and-type.md`, step 0). Plain is the default: steady phrases, Inter Tight SemiBold, off-white, at most one gold word per phrase, sentence case, centred at 55% of frame height (range 50 to 62%), a soft dark halo and no outline. **Kinetic is an experiment** (from 22 Oct 2026, tested on matched pairs): words appear as they are spoken, a short pop each, typeset by role:
+  - normal: Inter Tight SemiBold, off-white
+  - soft (articles and joiners): smaller, lighter, a little transparent
+  - stress: ExtraBold, 1.2 times larger, gold. Chosen from the lines marked in the brief and from the speaker's delivery (louder and slower than their usual), at most two per phrase
+  - number: Black, 1.5 times larger, gold
+  - big: the one word that carries the idea, in the payoff face, 1.9 times larger, gold, on its own line
+  Every piece also gets a clean master with no captions, so other tools can add their own.
+- **Branding on screen is minimal.** No eyebrow or logo near the faces. One small, quiet `talentsocial.network` at the bottom-left (22 px, about 60% opacity, above y 1440), hidden while a glass card is up. The glass outro carries the brand at the end.
+- **Cards are liquid glass.** Name cards (name in Inter Tight Bold, role in tracked gold caps) and the outro (Talent Social, talentsocial.network) show the real picture behind them, blurred and brightened, with a white tint, a bright rim top-left, a warm edge bottom-right and a soft shadow. Left aligned at the 92 px margin, ending by y 1440. No other boxes.
 - The same values as data: `templates/caption-style.json`.
+- Status: the advice and game series overlays (tabs, ledger, checklist cards, sting) in the overlay pack are still brand v1. Migrating them is open. Talk clips, interviews, stories and quick clips use brand v2.
 
 ## 5. Safe zones (1080x1920)
 Nothing important in the **top 220 px**, the **bottom 380 px** or the **right 140 px**. That means no headline, tab, logo, label, ledger, price badge, caption or CTA card there.
-Usable band: y from 220 to 1540.
+Usable band: y from 220 to 1540. Text and cards end by y 1440 (the team's confirmed rule: nothing in the bottom 25%, where captions and buttons of the platform sit); the 1540 line is the hard limit for everything else.
 
 ## 6. Motion
 - Hard cuts by default.
@@ -349,11 +363,12 @@ Usable band: y from 220 to 1540.
 - No silent end card: the CTA is spoken while its card shows; the video ends at most 0.5 s after the card's 3 s. Talk clips: the speaker's landing line plays under the CTA card instead.
 
 ## 9. CTA
-- One. Said and shown. Held 3 s. Above the bottom safe zone.
-- Exception, talk clips: the speaker cannot be asked to say our CTA, so it is shown only (card and caption), unless the speaker said a line that works as one.
-- Default: **"Follow for part 2"** (episodes) or **the event link** (teasers).
+- **Evergreen by default.** Talk clips, interviews, founder stories and quick formats end on the glass outro (Talent Social and talentsocial.network), held 3 s, with no date and no edition. Any of these can be reposted next month.
+- Event teasers are the only format that names an edition. They carry the event details, are made per edition, and the host says them. They are not reposted after the event.
+- Episodes: **"Follow for part 2"**, said and shown, held 3 s, above the bottom zone.
 - A comment keyword ("Comment ROLES and I'll send...") only when a named person will send the replies. No reply plan, no keyword.
 - A comment question with no promise ("Who do you think won?") is allowed in the game episode as its one CTA.
+- No RSVP buttons, no ticket prices and no countdowns in evergreen pieces.
 
 ## 10. People and claims
 - Written consent for anyone featured who is not a public figure. No consent, no clip.
@@ -380,7 +395,7 @@ Judge by views, average watch time, shares, saves and follows in the Instagram a
 | Captions | 2 to 5 words, 55 to 70% height, sentence case, at most one gold word | contact sheet |
 | Sting | 1 to 1.5 s, after the first line, not frame 1 (optional in talk clips) | contact sheet, brief |
 | Picture change | episodes every 3 to 5 s; teasers every 1 to 2 s | contact sheet (`measure.py` undercounts punch-ins) |
-| CTA | one, said and shown (talk clips: shown), held 3 s, above y 1540 | transcript, contact sheet |
+| CTA | one; evergreen glass outro on talk clips, interviews and stories (no date); said and shown on episodes; held 3 s, above y 1440 | transcript, contact sheet |
 | Consent, claims, licences | all recorded | brief |
 
 DO NOT POST for: a person without consent, a Vetted claim not in the register, music in the file without a recorded licence, or a forward promise about who will attend.
@@ -400,7 +415,7 @@ No logins, passwords or emails belong in this file.
 | Advice and game episodes | Post from @lemuel_abishua. Add @africaproductpeers and @talentsocial.network as collaborators. | decision recorded for v1 |
 | Events, panels and teasers | Post from @africaproductpeers | decision recorded for v1 |
 | Other platforms | TikTok, LinkedIn, WhatsApp: only from accounts the team owns and has confirmed | {{NEEDS_VERIFICATION}} |
-| Brand line on video | "Talent Social · powered by Vetted" | decided |
+| Brand line on video | "Talent Social · powered by Vetted" on the series bug of advice and game episodes. Talk clips, interviews and stories carry only a small quiet talentsocial.network at the bottom-left and the glass outro (no brand mark near faces) | decided 22 Oct |
 | Asset folder (shared drive) | `{{DRIVE_ASSET_FOLDER}}` | name to fill. Holds footage, music, fonts, logos, the sting. Never in the repo. |
 | Sting file | `sting-talentsocial.mp4` | placeholder name; the asset is made outside the repo |
 | Sting sound alone | `sting-talentsocial-sound.wav` | placeholder name {{NEEDS_VERIFICATION}} |
@@ -413,7 +428,7 @@ No logins, passwords or emails belong in this file.
 | File names | `{format}-{episode}-{platform}-{voice-or-music}.mp4`, for example `advice-ep03-ig-voice.mp4` | platform codes: `ig`, `tt`, `li`, `wa` |
 | Music | add inside the platform at upload where possible | licence stays with the platform |
 | Safe zones (1080x1920) | top 220 px, bottom 380 px, right 140 px | usable band y 220 to 1540 |
-| Headline font | Poppins ExtraBold, OFL licence | not installed on every machine; tools take `--font <ttf>`. Path: `{{FONT_PATH}}` |
+| Fonts | Inter Tight (variable, open licence, Google Fonts): `InterTight[wght].ttf` and `InterTight-Italic[wght].ttf` | keep them outside the repo, in `~/.local/share/vetted-video/fonts` or `$TS_FONT_DIR`; the tools find them there. The gold serif payoff uses Didot Italic on macOS |
 | `STT_PYTHON` | a Python 3 from a virtual environment that has faster-whisper, numpy and Pillow, for example `~/.local/share/vetted-video/stt/bin/python` | set once per machine. `export STT_PYTHON=<path>`. Tools that need only Pillow run with any python3. |
 | System tools | `ffmpeg` and `ffprobe` on the path | some builds lack the `subtitles`, `ass` and `drawtext` filters; the tools draw captions with Pillow and use `overlay` |
 | Claims register | private; ask Lemuel | if you cannot open it (for example, using the public kit), only the approved line in `IDENTITY.md` section 10 passes |
@@ -421,7 +436,7 @@ No logins, passwords or emails belong in this file.
 
 ## Colour and type
 
-Values and status: `templates/caption-style.json`. Gold about #F5B533 and charcoal about #181E2A are to confirm in Canva.
+Values and status: `templates/caption-style.json`. Brand v2 values were measured from talentsocial.network on 22 Oct 2026 (see `IDENTITY.md` section 3).
 
 ## Defaults
 
@@ -1133,32 +1148,52 @@ Read `../IDENTITY.md` first. Style data: `../templates/caption-style.json`.
 
 ## Input
 - The rough cut (agent) and the word-timed transcript, in output time.
-- The brief: headline, labels, confirmed name spellings.
+- The brief: caption mode and its one-line reason, headline (if any), labels, confirmed name spellings.
+
+## Step 0: choose the caption mode (write it in the brief with a one-line reason)
+Three modes. Kinetic is an experiment (status below), not the house default.
+- **none**: no captions burned in. The clean master is the deliverable. Another tool (CapCut auto-captions, the platform's captions) adds them, or none are wanted.
+- **plain**: steady phrases of 2 to 5 words, brand type, at most one gold word per phrase, no animation (`--style brand`). The default.
+- **kinetic**: words appear as spoken and are typeset by role: stressed words heavier, larger and gold, numbers largest, one big idea word in the gold serif (`--style kinetic`).
+
+Rules, first match wins:
+1. No speech, speech only in the background, or the piece is music-led: **none**. A teaser's claim goes on as a headline card, not as captions.
+2. Someone will caption it elsewhere, or the editor asks for a clean file: **none**.
+3. Sensitive subject (health, money harm, legal, a personal story), two or more people talking in turns, or a measured speaker with little emphasis: **plain**.
+4. Over 45 s, or captions would be on screen for most of a long story: **plain** (reading fatigue).
+5. It has to land with the sound off, runs 45 s or less, and has at least one of: a number, a one-idea line, humour, a strong opinion said with stress: **kinetic**.
+6. Anything else: **plain**.
+Limits for kinetic: never over a static headline that repeats the same words; one big word per phrase; if the contact sheet shows any frame where the words are hard to read, use plain for that clip.
+Always, whatever the mode: export a **clean master** (cards and outro, no captions), like the team's textless masters. It is the file other tools start from.
+
+Experiment (from 22 Oct 2026): kinetic captions are tested against plain on matched pairs, the same cut in both modes, posted on different days. Log `caption_mode` (none, plain, kinetic) in `templates/performance-log.csv`. Judge on average watch time and a readability review, not likes (reels get 5 to 100 likes, too few to separate them). Kinetic becomes a standard mode for rule-5 clips only if it beats plain on average watch time in at least 6 of 8 pairs. Otherwise it stays an option and is not extended.
 
 ## Steps
-1. **[chat] Chunk the captions.** 2 to 5 words each, sentence case, in the order spoken. Break on meaning, not just on length. Write them as an SRT: number, `00:00:00,000 --> 00:00:00,000`, text. Times in output time. For a teaser, the captions are the claim and reason (see the format page), not the speech.
-2. **[chat] Choose the gold word.** At most one per chunk, and not in every chunk: the number, the verb of an action, the stake. List the words, one per line, in `words.txt`.
-3. **[chat] Write the headline and labels.** Headline in caps, 2 lines at most, one gold word. Labels: name (white on charcoal) and topic or role (gold). Use the spellings the owners use. Mark any unconfirmed name MUST CONFIRM.
-4. **[chat] Check the words against the speech.** Spot-check 5 chunks at different points. Fix mis-heard words, especially names and numbers.
-5. **[agent] Make the caption overlay.** Run `$STT_PYTHON tools/captions_to_overlay.py captions.srt <out_dir> --font <ttf> --size 64 --y 0.62 --gold F5B533 --emphasis words.txt`. It writes a transparent PNG per chunk and `overlay.ffconcat`. Use the font path in `CONFIG.md`.
-6. **[agent] Burn the captions in.** Run `$STT_PYTHON tools/burn_captions.py <in.mp4> captions.srt <out.mp4> --font <ttf>` with the same options. It prints the output path and the duration.
-7. **[chat] Hand the headline and labels to the person.** The headline, labels and any card text are built in CapCut or Canva from the format page. The agent does not draw them in v1.
+1. **[chat] Chunk the captions (plain mode).** 2 to 5 words each, sentence case, in the order spoken. Break on meaning, not just on length. Write them as an SRT, or use the word-timed `transcript.json` directly. Times in output time. For a teaser, the claim is a headline card (see the format page), not the speech.
+2. **[chat] Choose the gold word (plain) or the stressed and big words (kinetic).** Plain: at most one gold word per chunk, not in every chunk: the number, the verb of an action, the stake. Kinetic: list stressed words in `words.txt` (they also come from the speaker's delivery) and the one big word per idea in `big.txt`.
+3. **[chat] Write the headline and labels.** A static headline only when the first spoken line is not already on screen or the framing is editorial. Labels are name cards (see `IDENTITY.md` section 4). Use the spellings the owners use. Mark any unconfirmed name MUST CONFIRM.
+4. **[chat] Check the words against the speech.** Spot-check 5 chunks at different points. Fix mis-heard words, especially names, numbers and tool names (Claude was heard as "cloud" and "clothes"). Put fixes in the brief.
+5. **[agent] Burn the captions in.** `$STT_PYTHON tools/burn_captions.py <in.mp4> transcript.json <out.mp4> --font <InterTight[wght].ttf> --style kinetic|brand --emphasis words.txt --big big.txt --y 0.55`. For an SRT use `--style brand`. It prints the output path and duration. Skip this step in mode none.
+6. **[agent] Export the clean master** with `tools/loudness.sh` from the cut that has cards and the outro but no captions.
+7. **[agent] Look at the contact sheet** at a stride of 2 to 3 s. Check legibility on bright backgrounds, overlap with cards, and that kinetic words are readable on every frame shown.
 
 ## Output
-- `captions.srt` and `words.txt`.
+- The caption mode and reason, `words.txt` (and `big.txt` for kinetic), the SRT for plain mode in chat.
 - Headline and label text, with times.
-- A captioned render (agent). In chat, the person imports the SRT into CapCut or Canva and applies the values in `caption-style.json`.
+- A captioned render (agent) and the clean master. In chat, the person imports the SRT into CapCut or Canva and applies the values in `caption-style.json`.
 
 ## Checks
 - Captions match the speech (5 spot-checks).
-- Every chunk is 2 to 5 words, sentence case, at most one gold word.
-- Captions sit at 55 to 70% of frame height.
+- The mode follows the rules, and the brief says why.
+- Plain: every chunk is 2 to 5 words, sentence case, at most one gold word. Kinetic: at most two stressed words and one big word per phrase.
+- Captions are centred at about 55% of frame height (range 50 to 62%).
+- A clean master exists for every piece.
 - Nothing in the top 220 px, the bottom 380 px or the right 140 px.
 - No caption repeats a name already on a card.
 - Names spelled as their owners spell them.
 
 ## Use in another tool
-Paste `IDENTITY.md`, this file and the word-timed transcript. Ask for the SRT, `words.txt`, headline and labels.
+Paste `IDENTITY.md`, this file and the word-timed transcript. Ask for the caption mode with its reason, the SRT (plain mode), `words.txt`, headline and labels.
 
 
 ---
@@ -1352,6 +1387,47 @@ Paste `IDENTITY.md`, this file, the post copy template and the numbers. Ask for 
 
 ---
 
+<!-- FILE: skills/8-batch-plan.md -->
+# FILE: skills/8-batch-plan.md
+
+---
+name: video-8-batch-plan
+description: Plan the editing of a whole footage library (many files, several cameras, several events) before cutting anything: source map, posted check, yield table, sequence, consent register, review sheet. Use when someone says "edit everything", points at a folder, or asks what to make from a library.
+---
+
+# 8. batch-plan
+
+Read `../IDENTITY.md` first. Skills 1 to 7 make one piece. This one decides which pieces to make, in what order, and for which goal.
+
+## Input
+- The folder or folders. A shot log if one exists.
+- `CONFIG.md` and the growth hypothesis (which funnels video feeds).
+- What is already posted: the accounts' reels pages, read-only, and any list of source files a previous editor used.
+
+## Steps
+1. **[agent] Source map.** For every file: camera, resolution, frame rate, whether it carries speech, duration, colour profile (read the metadata), and whether it opens. Unreadable files go on a re-copy list. Group by event.
+2. **[agent] Sync check for every new camera.** Find one clear event (the end of a long turn). Compare picture and transcript. If they differ, record a `vshift` for the file and check again on the finished cut (L-2026-10-22-03).
+3. **[agent] Transcribe every file with speech.** `tools/transcribe.py`. Keep word times. Names and key words are mishearings until a person confirms them by ear.
+4. **[chat] Posted check.** List what is already out. Do not re-cut a posted piece unless the new cut is a different format.
+5. **[chat] Compare with what already exists.** Read the previous editor's notes, not just their files: which formats, which footage, what the client rejected. List what is new here and what would repeat.
+6. **[chat] Yield table.** One row per source: format, candidate count, publish count, funnel it feeds, playbook chapter, persona, stage. Counts are estimates until the briefs exist.
+7. **[chat] Sequence.** By date first (events the pieces should feed), then by goal. Name accounts per `CONFIG.md`.
+8. **[chat] Consent and claims register.** Who appears, consent source, names confirmed or not, claims to avoid.
+9. **[chat] Brief the first batch with skill 1.** Up to 8 pieces, with at least two structures the previous work does not have.
+10. **[agent] Build the batch with skills 2 to 5, QC with skill 6, and write one review sheet** (contact sheet, hook line, verdict buttons, funnel tag).
+
+## Output
+A plan document and a review sheet. Nothing is posted by this skill.
+
+## Checks
+- No piece duplicates a posted piece.
+- Every piece names a playbook chapter, persona and stage, or is marked brand / fun.
+- Every source with speech has a sync check on record.
+- The first batch names the ideas the library has not been used for before.
+
+
+---
+
 <!-- FILE: templates/shoot-plan.md -->
 # FILE: templates/shoot-plan.md
 
@@ -1539,7 +1615,7 @@ Line 1 is the hook. It must be true to the video and readable on its own.
 <!-- FILE: templates/performance-log.csv -->
 # FILE: templates/performance-log.csv
 
-date_posted,format,episode,account,collaborators,hook_line,runtime_s,cover_time_s,cta,music_source,qc_verdict,views_48h,avg_watch_time_s_48h,shares_48h,saves_48h,follows_48h,views_7d,avg_watch_time_s_7d,shares_7d,saves_7d,follows_7d,what_changed,lesson
+date_posted,format,episode,account,collaborators,hook_line,caption_mode,pair_id,runtime_s,cover_time_s,cta,music_source,qc_verdict,views_48h,avg_watch_time_s_48h,shares_48h,saves_48h,follows_48h,views_7d,avg_watch_time_s_7d,shares_7d,saves_7d,follows_7d,what_changed,lesson
 
 
 ---
@@ -1548,60 +1624,163 @@ date_posted,format,episode,account,collaborators,hook_line,runtime_s,cover_time_
 # FILE: templates/caption-style.json
 
 {
-  "_note": "The house caption and type style as data. Values come from IDENTITY.md. Tools read --font, --size, --y, --gold from here; chat-tier users copy the values into CapCut or Canva.",
-  "canvas": { "width_px": 1080, "height_px": 1920, "fps": 30 },
+  "_note": "The house caption and type style as data (brand v2, 22 Oct 2026). Values come from IDENTITY.md sections 3 and 4. Tools read the font files from $TS_FONT_DIR or ~/.local/share/vetted-video/fonts; chat-tier users copy the values into CapCut or Canva.",
+  "canvas": {
+    "width_px": 1080,
+    "height_px": 1920,
+    "fps": 30
+  },
   "fonts": {
-    "headline": { "family": "Poppins", "weight": "ExtraBold", "licence": "OFL", "case": "upper" },
-    "captions": { "family": "Poppins", "weight": "{{NEEDS_VERIFICATION}}", "licence": "OFL", "case": "sentence" },
-    "file_path": "{{FONT_PATH}}"
+    "face": {
+      "family": "Inter Tight",
+      "weights": {
+        "normal": 600,
+        "soft": 500,
+        "name": 700,
+        "stress": 800,
+        "number": 900
+      },
+      "licence": "OFL",
+      "source": "Google Fonts"
+    },
+    "payoff": {
+      "family": "Didot Italic (macOS) or Inter Tight Italic",
+      "note": "portable choice, open: a Google serif such as Instrument Serif"
+    },
+    "files": [
+      "InterTight[wght].ttf",
+      "InterTight-Italic[wght].ttf"
+    ]
   },
   "colours": {
-    "gold": "F5B533",
-    "charcoal": "181E2A",
-    "caption_text": "FFFFFF",
-    "off_white": "{{NEEDS_VERIFICATION}}",
+    "page": "131210",
+    "raised": [
+      "191715",
+      "1E1C1A"
+    ],
+    "text": "F6F5F4",
+    "muted": "A9A39E",
+    "gold_cards": "D8B579",
+    "gold_video": "E2B05A",
+    "on_gold": "181410",
     "purple": "only inside the Vetted mark",
-    "status": "gold and charcoal are 'about' values, to confirm in Canva"
+    "source": "talentsocial.network, measured 22 Oct 2026"
   },
   "captions": {
-    "size_px": 64,
-    "size_ratio_of_width": 0.059,
-    "y_position_ratio": 0.62,
-    "y_range_ratio": [0.55, 0.70],
+    "style": "kinetic",
+    "size_px": 62,
+    "y_position_ratio": 0.55,
+    "y_range_ratio": [
+      0.5,
+      0.62
+    ],
     "align": "centre",
-    "text_colour": "FFFFFF",
-    "shadow": "soft, dark, no hard outline",
-    "min_words_per_chunk": 2,
-    "max_words_per_chunk": 5,
-    "max_gold_words_per_chunk": 1,
-    "case": "sentence"
+    "roles": {
+      "normal": {
+        "scale": 1.0
+      },
+      "soft": {
+        "scale": 0.82,
+        "opacity": 0.85
+      },
+      "stress": {
+        "scale": 1.22,
+        "colour": "gold_video",
+        "max_per_phrase": 2
+      },
+      "number": {
+        "scale": 1.5,
+        "colour": "gold_video"
+      },
+      "big": {
+        "scale": 1.9,
+        "face": "payoff",
+        "colour": "gold_video",
+        "own_line": true,
+        "max_per_phrase": 1
+      }
+    },
+    "words_per_phrase": [
+      3,
+      6
+    ],
+    "reveal": "word by word as spoken, short pop",
+    "halo": "soft warm-black glow, no outline",
+    "case": "sentence",
+    "modes": [
+      "none",
+      "plain",
+      "kinetic"
+    ],
+    "default_mode": "plain",
+    "kinetic_status": "experiment from 22 Oct 2026; adopt for rule-5 clips only if it beats plain on watch time in 6 of 8 matched pairs",
+    "clean_master": "always exported"
   },
   "headline": {
-    "y_range_ratio": [0.20, 0.35],
+    "use": "only when the first spoken line is not on screen as captions, or when the framing is editorial",
+    "y_range_ratio": [
+      0.26,
+      0.4
+    ],
     "max_lines": 2,
-    "max_gold_words": 1,
-    "case": "upper",
-    "visible_from_s": 0,
-    "visible_until": "the sting"
+    "plus": "one gold payoff line",
+    "align": "left at 92 px",
+    "case": "sentence"
   },
-  "labels": {
-    "name": { "text_colour": "FFFFFF", "background": "181E2A" },
-    "topic": { "text_colour": "F5B533" },
-    "y_range_ratio": [0.72, 0.79],
-    "show_for_s": 3,
-    "note": "Band sits between the caption band and the bottom safe zone."
+  "cards": {
+    "style": "liquid glass",
+    "name_card": {
+      "name": "Inter Tight 700, fits 64 px",
+      "role": "Inter Tight 600, 26 px, tracked caps, gold_video"
+    },
+    "outro": {
+      "title": "Talent Social",
+      "line": "talentsocial.network",
+      "held_s": 3,
+      "no_date": true
+    },
+    "glass": {
+      "backdrop": "real picture, gaussian blur sigma 22, saturation 1.5, magnified 12%",
+      "tint": "white 52% to 18% top to bottom",
+      "rim": "white top-left to faint bottom-right",
+      "warm_edge": "gold_video bottom-right",
+      "shadow": "soft, offset 12 px"
+    },
+    "left_px": 92,
+    "bottom_max_px": 1440
   },
-  "safe_zones_px": { "top": 220, "bottom": 380, "right": 140 },
-  "usable_area_px": { "x_min": 0, "x_max": 940, "y_min": 220, "y_max": 1540 },
-  "brand_mark": { "text": "Talent Social · powered by Vetted", "corner": "top-left", "y_min_px": 220, "from": "after the sting", "series_bug_below_mark": true },
+  "safe_zones_px": {
+    "top": 220,
+    "right": 140,
+    "bottom_hard": 380,
+    "text_bottom_max_y": 1440
+  },
+  "usable_area_px": {
+    "x_min": 0,
+    "x_max": 940,
+    "y_min": 220,
+    "y_max": 1540
+  },
   "motion": {
-    "punch_in_percent": [10, 15],
-    "punch_in_every_s": [3, 5],
-    "section_transition": "gold band wipe, about 0.3 s, between sections only"
+    "punch_in_percent": [
+      10,
+      15
+    ],
+    "punch_in_every_s": [
+      3,
+      5
+    ],
+    "note": "punch-ins are continuity cuts at sentence boundaries; the audio is not cut"
   },
-  "cta_card": { "held_s": 3, "bottom_edge_max_px": 1540 }
+  "watermark": {
+    "text": "talentsocial.network",
+    "size_px": 22,
+    "opacity": 0.6,
+    "position": "bottom-left, x 92, y 1402",
+    "hide_while": "a glass card is on screen",
+    "note": "No eyebrow or logo near faces (Lemuel, 22 Oct)"
+  }
 }
-
 
 ---
 
@@ -1759,7 +1938,7 @@ Real faces and Nairobi context. A text hook with a number from frame 1. Cuts on 
 
 # Video tools
 
-Seven small tools for the agent tier (Claude Code or Codex with the repo cloned). They use ffmpeg, ffprobe, Python 3.12, Pillow, numpy and faster-whisper. Nothing here uses the network, except Whisper downloading its model the first time. Every tool prints its usage when run with no arguments, writes only where you tell it, and never deletes your input.
+Small tools for the agent tier (Claude Code or Codex with the repo cloned). They use ffmpeg, ffprobe, Python 3.12, Pillow, numpy and faster-whisper. Nothing here uses the network, except Whisper downloading its model the first time. Every tool prints its usage when run with no arguments, writes only where you tell it, and never deletes your input.
 
 ## Set up
 
@@ -1775,7 +1954,7 @@ export STT_PYTHON=~/.local/share/vetted-video/stt/bin/python
 
 Every Python tool below can run under `$STT_PYTHON`. Only `transcribe.py` needs it; the rest work with any python3 that has Pillow (`measure.py` and `cut_silence.py` need no Pillow at all, apart from one optional check).
 
-**Poppins.** The headline font is Poppins ExtraBold (open licence). Download it from Google Fonts (fonts.google.com/specimen/Poppins), unzip, and pass the file as `--font`, for example `~/Fonts/Poppins-ExtraBold.ttf`. Keep it outside the repo. For a quick test any bold TTF works, for example `/System/Library/Fonts/Supplemental/Arial Black.ttf`.
+**Fonts.** The house type is Inter Tight (setup lines, captions, cards) with Instrument Serif Italic for the gold payoff word. Both are open licence (Google Fonts). Download `InterTight[wght].ttf`, `InterTight-Italic[wght].ttf` and `InstrumentSerif-Italic.ttf` from fonts.google.com and put them in `~/.local/share/vetted-video/fonts` (or point `TS_FONT_DIR` at the folder). `brand.py` finds them there. No fonts are kept in this repo. Without Instrument Serif the payoff falls back to Didot Italic on a Mac, then Inter Tight Italic.
 
 ## The tools
 
@@ -1791,12 +1970,12 @@ python3 cut_silence.py raw.mp4 cut.mp4 --min-silence 0.4 --pad 0.08 --threshold 
 
 **captions_to_overlay.py** - draws one transparent PNG per caption chunk plus `overlay.ffconcat` and `overlay.json`. White text, thin charcoal edge, soft shadow, 2 to 5 words, centred at `--y` (0.62 of the height), at most one gold word per chunk. The gold word comes from `--emphasis` (one word per line), otherwise a number word such as "hundred" or any digit word.
 ```
-$STT_PYTHON captions_to_overlay.py work/transcript.json work/overlay --font ~/Fonts/Poppins-ExtraBold.ttf --emphasis words.txt
+$STT_PYTHON captions_to_overlay.py work/transcript.json work/overlay --font ~/.local/share/vetted-video/fonts/InterTight[wght].ttf --emphasis words.txt
 ```
 
-**burn_captions.py** - runs the step above and composites the result onto the video. Audio is copied. `--max-seconds` renders only the start, for tests.
+**burn_captions.py** - runs the step above and composites the result onto the video. `--style brand` is plain steady captions (the default mode); `--style kinetic` is the experiment: words pop in as spoken and are typeset by role (stressed words larger and gold, numbers larger, one `--big` word in the gold serif); `--style classic` is the old outlined look. Choose the mode by the rules in `skills/3-captions-and-type.md`. Audio is copied. `--max-seconds` renders only the start, for tests.
 ```
-$STT_PYTHON burn_captions.py cut.mp4 work/transcript.json captioned.mp4 --font ~/Fonts/Poppins-ExtraBold.ttf
+$STT_PYTHON burn_captions.py cut.mp4 work/transcript.json captioned.mp4 --font ~/.local/share/vetted-video/fonts/InterTight[wght].ttf --style kinetic --emphasis words.txt --big big.txt
 ```
 Captions go into the whole video, so use a clean version. If the footage already has captions burned in, they will double up.
 
@@ -1814,6 +1993,16 @@ python3 measure.py master.mp4 --format advice
 ```
 python3 contact_sheet.py master.mp4 sheet.jpg --every 2.5
 ```
+
+
+**brand.py** - the brand values (colours, font loading) the drawing tools share. Values come from the live site (see `IDENTITY.md`).
+
+**brand_cards.py** - draws the on-screen cards as transparent PNGs from a small JSON spec: a static headline with a gold payoff line, a small quiet site address, number cards, and liquid-glass name cards and outro (the picture behind the glass is blurred when the cards are composited). It checks the safe zones and stops if text lands in one.
+```
+$STT_PYTHON brand_cards.py cards.json out_dir
+```
+
+**kinetic_captions.py** - the kinetic caption renderer used by `burn_captions.py --style kinetic`. Words appear as spoken; each is typeset by its role; stress is read from the speaker's delivery (louder and slower than their usual).
 
 ## Typical order
 
@@ -1843,11 +2032,11 @@ What it writes under `--out` (the script refuses an `--out` inside a git repo, b
 
 Rules it enforces: nothing in the top 220 px, the bottom 380 px (y 1540 and below) or the right 140 px (x 940 and over); the label sits at 72 to 79% of the height, the headline at 20 to 35%, the CTA's bottom edge at y 1500. After writing it re-reads every PNG, checks that the four corners are transparent and that no pixel with alpha above zero lies outside the band, and exits 1 on any failure. Invisible soft-shadow tails (alpha 12 or less) that fall outside the band are cleared; anything stronger fails the run. The clips are motion and may pass through the unsafe zones on purpose (the wipe and the sting cover the frame).
 
-Colours come from IDENTITY: gold F5B533, charcoal 181E2A, off-white F4F1EA (a placeholder to confirm). Purple is not used. Gold appears only on the one headline word, the active tab, the label's topic line, the CTA button and the sting underline.
+(The overlay pack below is the earlier brand v1 look, for the advice and game episodes, and has not been migrated. Colours there: gold F5B533, charcoal 181E2A.) Purple is not used. Gold appears only on the one headline word, the active tab, the label's topic line, the CTA button and the sting underline.
 
 Placeholders and limits:
 - The brand mark is **text only** until the real logo file exists.
-- `--font` takes any heavy TTF; Poppins ExtraBold is the house font once downloaded. The default is Arial Black, then Arial Bold. Arial Black is wide, so headline lines are fitted down in size to stay inside the band (long lines get small).
+- `--font` takes any heavy TTF for the older overlay pack. The default is Arial Black, then Arial Bold. Arial Black is wide, so headline lines are fitted down in size to stay inside the band (long lines get small).
 - Graphics are centred on x 490, the middle of the usable band (60 to 920), not the middle of the frame.
 - Clip sizes: `sting.mov` is about 2.3 MB; the other clips are under 1 MB. The files were checked with ffprobe and by decoding frames. They have **not** been imported into CapCut: every CapCut step in `CAPCUT-HOW-TO.md` is marked `{{NEEDS_VERIFICATION in CapCut}}`.
 - Not in the pack: the game episode's ledger, pick cards and price badges.

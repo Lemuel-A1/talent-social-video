@@ -27,14 +27,14 @@ read -r BI BTP < <(measure "$IN")
 echo "before: ${BI} LUFS, true peak ${BTP} dBFS"
 
 # pass 1: loudnorm analysis (JSON block at the end of stderr)
-J=$(ffmpeg -hide_banner -nostats -i "$IN" -vn -af "loudnorm=I=${TARGET}:TP=-2:LRA=11:print_format=json" -f null - 2>&1)
+J=$(ffmpeg -hide_banner -nostats -i "$IN" -vn -af "loudnorm=I=${TARGET}:TP=-2.2:LRA=11:print_format=json" -f null - 2>&1)
 val() { printf '%s\n' "$J" | grep "\"$1\"" | tail -1 | sed -E 's/.*: "([^"]*)".*/\1/'; }
 MI=$(val input_i); MTP=$(val input_tp); MLRA=$(val input_lra); MTH=$(val input_thresh); MOFF=$(val target_offset)
 [ -n "$MI" ] && [ -n "$MOFF" ] || { echo "loudness.sh: could not read loudnorm measurements." >&2; exit 1; }
 
 # pass 2: apply (linear gain; resampled back to 48 kHz because loudnorm upsamples)
 ffmpeg -hide_banner -loglevel error -y -i "$IN" -map 0:v? -map 0:a:0 -c:v copy \
-  -af "loudnorm=I=${TARGET}:TP=-2:LRA=11:measured_I=${MI}:measured_TP=${MTP}:measured_LRA=${MLRA}:measured_thresh=${MTH}:offset=${MOFF}:linear=true:print_format=summary,aresample=48000" \
+  -af "loudnorm=I=${TARGET}:TP=-2.2:LRA=11:measured_I=${MI}:measured_TP=${MTP}:measured_LRA=${MLRA}:measured_thresh=${MTH}:offset=${MOFF}:linear=true:print_format=summary,aresample=48000" \
   -c:a aac -b:a 192k -ar 48000 -movflags +faststart "$OUT"
 
 read -r AI ATP < <(measure "$OUT")

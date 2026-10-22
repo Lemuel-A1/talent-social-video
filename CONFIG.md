@@ -7,7 +7,7 @@ No logins, passwords or emails belong in this file.
 | Advice and game episodes | Post from @lemuel_abishua. Add @africaproductpeers and @talentsocial.network as collaborators. | decision recorded for v1 |
 | Events, panels and teasers | Post from @africaproductpeers | decision recorded for v1 |
 | Other platforms | TikTok, LinkedIn, WhatsApp: only from accounts the team owns and has confirmed | {{NEEDS_VERIFICATION}} |
-| Brand line on video | "Talent Social · powered by Vetted" | decided |
+| Brand line on video | "Talent Social · powered by Vetted" on the series bug of advice and game episodes. Talk clips, interviews and stories carry only a small quiet talentsocial.network at the bottom-left and the glass outro (no brand mark near faces) | decided 22 Oct |
 | Asset folder (shared drive) | `{{DRIVE_ASSET_FOLDER}}` | name to fill. Holds footage, music, fonts, logos, the sting. Never in the repo. |
 | Sting file | `sting-talentsocial.mp4` | placeholder name; the asset is made outside the repo |
 | Sting sound alone | `sting-talentsocial-sound.wav` | placeholder name {{NEEDS_VERIFICATION}} |
@@ -20,7 +20,7 @@ No logins, passwords or emails belong in this file.
 | File names | `{format}-{episode}-{platform}-{voice-or-music}.mp4`, for example `advice-ep03-ig-voice.mp4` | platform codes: `ig`, `tt`, `li`, `wa` |
 | Music | add inside the platform at upload where possible | licence stays with the platform |
 | Safe zones (1080x1920) | top 220 px, bottom 380 px, right 140 px | usable band y 220 to 1540 |
-| Headline font | Poppins ExtraBold, OFL licence | not installed on every machine; tools take `--font <ttf>`. Path: `{{FONT_PATH}}` |
+| Fonts | Inter Tight (variable, open licence, Google Fonts): `InterTight[wght].ttf` and `InterTight-Italic[wght].ttf` | keep them outside the repo, in `~/.local/share/vetted-video/fonts` or `$TS_FONT_DIR`; the tools find them there. The gold serif payoff uses Didot Italic on macOS |
 | `STT_PYTHON` | a Python 3 from a virtual environment that has faster-whisper, numpy and Pillow, for example `~/.local/share/vetted-video/stt/bin/python` | set once per machine. `export STT_PYTHON=<path>`. Tools that need only Pillow run with any python3. |
 | System tools | `ffmpeg` and `ffprobe` on the path | some builds lack the `subtitles`, `ass` and `drawtext` filters; the tools draw captions with Pillow and use `overlay` |
 | Claims register | private; ask Lemuel | if you cannot open it (for example, using the public kit), only the approved line in `IDENTITY.md` section 10 passes |
@@ -28,7 +28,7 @@ No logins, passwords or emails belong in this file.
 
 ## Colour and type
 
-Values and status: `templates/caption-style.json`. Gold about #F5B533 and charcoal about #181E2A are to confirm in Canva.
+Values and status: `templates/caption-style.json`. Brand v2 values were measured from talentsocial.network on 22 Oct 2026 (see `IDENTITY.md` section 3).
 
 ## Defaults
 

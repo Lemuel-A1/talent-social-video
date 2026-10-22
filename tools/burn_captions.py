@@ -2,7 +2,7 @@
 """burn_captions.py - burn captions into a video (Pillow overlay + ffmpeg overlay filter).
 
 Usage: burn_captions.py <in.mp4> <captions.srt|transcript.json> <out.mp4> --font <ttf>
-         [--size 64] [--y 0.62] [--gold F5B533] [--emphasis words.txt]
+         [--size 64] [--y 0.62] [--gold E2B05A] [--emphasis words.txt] [--style kinetic|brand|classic] [--big words.txt] [--weight 600]
          [--max-seconds S] [--keep-overlay DIR]
 
 Draws caption PNGs with captions_to_overlay.py, then composites them over the video.
@@ -13,6 +13,7 @@ import argparse, json, os, shutil, subprocess, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import captions_to_overlay as cto
+import kinetic_captions as ktc
 
 
 def run(cmd):
@@ -39,7 +40,10 @@ def main():
     ap.add_argument("--font", required=True)
     ap.add_argument("--size", type=int, default=64)
     ap.add_argument("--y", type=float, default=0.62)
-    ap.add_argument("--gold", default="F5B533")
+    ap.add_argument("--gold", default="E2B05A")
+    ap.add_argument("--style", choices=["kinetic", "brand", "classic"], default="kinetic")
+    ap.add_argument("--big", help="file of words that carry the idea: typeset very large in the gold payoff face (kinetic style)")
+    ap.add_argument("--weight", type=int, default=600)
     ap.add_argument("--emphasis")
     ap.add_argument("--max-seconds", type=float)
     ap.add_argument("--keep-overlay")
@@ -55,7 +59,12 @@ def main():
     if a.max_seconds:
         dur = min(dur, a.max_seconds)
     work = a.keep_overlay or os.path.splitext(a.output)[0] + "_overlay"
-    concat, meta = cto.build(a.captions, work, a.font, a.size, a.y, a.gold, a.emphasis, w, h, a.max_seconds)
+    if a.style == "kinetic":
+        if not a.captions.lower().endswith(".json"):
+            sys.exit("burn_captions.py: --style kinetic needs transcript.json (word times). Use --style brand for an .srt.")
+        concat, meta = ktc.build(a.captions, work, a.font, a.size, a.y, a.gold, a.emphasis, a.big, w, h, a.max_seconds, audio_from=a.video)
+    else:
+        concat, meta = cto.build(a.captions, work, a.font, a.size, a.y, a.gold, a.emphasis, w, h, a.max_seconds, a.style, a.weight)
 
     graph = (f"[1:v]fps={fps:.3f},format=rgba[ov];"
              f"[0:v][ov]overlay={meta['x']}:{meta['y']}:eof_action=pass:format=auto,format=yuv420p[v]")

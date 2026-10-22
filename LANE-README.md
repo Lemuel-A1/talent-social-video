@@ -29,7 +29,7 @@ Seven plain markdown skills, three format pages, and a few small tools. They tur
 
 ## The order
 
-Before a shoot: skill 0 → the shoot plan. Then: transcript → skill 1 → skill 2 → skill 3 → skill 4 → a person builds the overlays → skill 5 → skill 6 → a person posts → skill 7.
+Before a shoot: skill 0 → the shoot plan. Then: transcript → skill 1 → skill 2 → skill 3 → skill 4 → a person builds the overlays → skill 5 → skill 6 → a person posts → skill 7. Many files at once, or a whole folder: skill 8 first (the batch plan).
 
 ## Two tiers
 

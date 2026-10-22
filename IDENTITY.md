@@ -19,27 +19,40 @@ Two kinds of video, two jobs:
 - Words: "assessment", never "audition". Never "proof of work". Never "can't cheat".
 - Plain, warm, short sentences. No hype words, no false urgency.
 
-## 3. Colour
-| Use | Value | Status |
-|---|---|---|
-| Accent (gold) | about #F5B533 | to confirm in Canva |
-| Base (charcoal) | about #181E2A | to confirm in Canva |
-| Off-white | {{NEEDS_VERIFICATION}} | pick one hex in Canva |
-| Purple | only inside the Vetted mark | |
+## 3. Colour (brand v2, measured from talentsocial.network on 22 Oct 2026)
+| Use | Value |
+|---|---|
+| Page and base (warm black) | #131210; raised #191715 and #1E1C1A |
+| Text | off-white #F6F5F4; muted #A9A39E |
+| Gold on cards and the payoff phrase | #D8B579 |
+| Gold on video (small text, emphasis words, any button) | #E2B05A (the site's button fill; it reads better over moving footage) |
+| Dark text on gold | #181410 |
+| Purple | only inside the Vetted mark |
 
-- Gold has one job: emphasis. At most one gold word in a caption chunk. Besides that word, only these may be gold: the active tab, the topic line of a label, the CTA button. Never more than three gold items on screen at once.
+- Gold has one job: emphasis. In plain captions, one word per phrase. In kinetic captions, stressed words, numbers and the one big word (see section 4). Besides captions, only the role line of a name card and the payoff phrase may be gold. Never more than four gold items on screen at once.
 - Never gold backgrounds. Never every word.
-- Yellow emphasis is the short-form convention. Our gold is a shade of it, chosen to sit with warm Nairobi footage and the purple parent mark.
+- Old values (#F5B533 gold, #181E2A navy) were guesses from reels. Do not use them in new work.
+- Colour grade: the team's `NTS_Signature` LUT for the Sony camera (S-Log3), a light trim on the Rec.709 interview camera. The warm look matches the site's warm blacks.
 
-## 4. Type
-- **Headline (frame 1):** heavy geometric sans, Poppins ExtraBold (OFL licence), caps, at most 2 lines, 20 to 35% of frame height, one gold word. Every line fits inside the safe zones.
-- **Captions:** sentence case (capital letter only at the start of a spoken sentence and for names; a chunk that continues a sentence starts lower case), 2 to 5 words per chunk, white with a soft shadow, 55 to 70% of frame height, at most one gold word per chunk.
-- **Labels:** name in white on charcoal; topic or role in gold. Shown on first appearance of a speaker, about 3 s.
+## 4. Type (brand v2)
+- **Face:** Inter Tight (open licence, Google Fonts) for setup lines, captions, cards and the outro. Files: `InterTight[wght].ttf` and `InterTight-Italic[wght].ttf`, kept outside the repo (see `CONFIG.md`). Weights: 600 normal, 700 names, 800 stress, 900 numbers.
+- **Payoff face:** a gold serif italic for the one word or phrase that carries the idea: Didot Italic where macOS has it (the team's confirmed taste), Inter Tight Italic elsewhere. A Google serif such as Instrument Serif is the portable choice (open decision).
+- **Headline (static):** sentence case, Inter Tight SemiBold, tight tracking, left aligned at a 92 px margin, at most 2 lines plus a gold payoff line, 26 to 40% of frame height, over a soft warm-black gradient (no boxes). Use it only when the first spoken line is not already on screen as captions, or when the framing is editorial (a question the speakers did not say).
+- **Captions have three modes: none, plain, kinetic** (rules in `skills/3-captions-and-type.md`, step 0). Plain is the default: steady phrases, Inter Tight SemiBold, off-white, at most one gold word per phrase, sentence case, centred at 55% of frame height (range 50 to 62%), a soft dark halo and no outline. **Kinetic is an experiment** (from 22 Oct 2026, tested on matched pairs): words appear as they are spoken, a short pop each, typeset by role:
+  - normal: Inter Tight SemiBold, off-white
+  - soft (articles and joiners): smaller, lighter, a little transparent
+  - stress: ExtraBold, 1.2 times larger, gold. Chosen from the lines marked in the brief and from the speaker's delivery (louder and slower than their usual), at most two per phrase
+  - number: Black, 1.5 times larger, gold
+  - big: the one word that carries the idea, in the payoff face, 1.9 times larger, gold, on its own line
+  Every piece also gets a clean master with no captions, so other tools can add their own.
+- **Branding on screen is minimal.** No eyebrow or logo near the faces. One small, quiet `talentsocial.network` at the bottom-left (22 px, about 60% opacity, above y 1440), hidden while a glass card is up. The glass outro carries the brand at the end.
+- **Cards are liquid glass.** Name cards (name in Inter Tight Bold, role in tracked gold caps) and the outro (Talent Social, talentsocial.network) show the real picture behind them, blurred and brightened, with a white tint, a bright rim top-left, a warm edge bottom-right and a soft shadow. Left aligned at the 92 px margin, ending by y 1440. No other boxes.
 - The same values as data: `templates/caption-style.json`.
+- Status: the advice and game series overlays (tabs, ledger, checklist cards, sting) in the overlay pack are still brand v1. Migrating them is open. Talk clips, interviews, stories and quick clips use brand v2.
 
 ## 5. Safe zones (1080x1920)
 Nothing important in the **top 220 px**, the **bottom 380 px** or the **right 140 px**. That means no headline, tab, logo, label, ledger, price badge, caption or CTA card there.
-Usable band: y from 220 to 1540.
+Usable band: y from 220 to 1540. Text and cards end by y 1440 (the team's confirmed rule: nothing in the bottom 25%, where captions and buttons of the platform sit); the 1540 line is the hard limit for everything else.
 
 ## 6. Motion
 - Hard cuts by default.
@@ -64,11 +77,12 @@ Usable band: y from 220 to 1540.
 - No silent end card: the CTA is spoken while its card shows; the video ends at most 0.5 s after the card's 3 s. Talk clips: the speaker's landing line plays under the CTA card instead.
 
 ## 9. CTA
-- One. Said and shown. Held 3 s. Above the bottom safe zone.
-- Exception, talk clips: the speaker cannot be asked to say our CTA, so it is shown only (card and caption), unless the speaker said a line that works as one.
-- Default: **"Follow for part 2"** (episodes) or **the event link** (teasers).
+- **Evergreen by default.** Talk clips, interviews, founder stories and quick formats end on the glass outro (Talent Social and talentsocial.network), held 3 s, with no date and no edition. Any of these can be reposted next month.
+- Event teasers are the only format that names an edition. They carry the event details, are made per edition, and the host says them. They are not reposted after the event.
+- Episodes: **"Follow for part 2"**, said and shown, held 3 s, above the bottom zone.
 - A comment keyword ("Comment ROLES and I'll send...") only when a named person will send the replies. No reply plan, no keyword.
 - A comment question with no promise ("Who do you think won?") is allowed in the game episode as its one CTA.
+- No RSVP buttons, no ticket prices and no countdowns in evergreen pieces.
 
 ## 10. People and claims
 - Written consent for anyone featured who is not a public figure. No consent, no clip.
@@ -95,7 +109,7 @@ Judge by views, average watch time, shares, saves and follows in the Instagram a
 | Captions | 2 to 5 words, 55 to 70% height, sentence case, at most one gold word | contact sheet |
 | Sting | 1 to 1.5 s, after the first line, not frame 1 (optional in talk clips) | contact sheet, brief |
 | Picture change | episodes every 3 to 5 s; teasers every 1 to 2 s | contact sheet (`measure.py` undercounts punch-ins) |
-| CTA | one, said and shown (talk clips: shown), held 3 s, above y 1540 | transcript, contact sheet |
+| CTA | one; evergreen glass outro on talk clips, interviews and stories (no date); said and shown on episodes; held 3 s, above y 1440 | transcript, contact sheet |
 | Consent, claims, licences | all recorded | brief |
 
 DO NOT POST for: a person without consent, a Vetted claim not in the register, music in the file without a recorded licence, or a forward promise about who will attend.

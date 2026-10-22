@@ -1,6 +1,6 @@
 # Video tools
 
-Seven small tools for the agent tier (Claude Code or Codex with the repo cloned). They use ffmpeg, ffprobe, Python 3.12, Pillow, numpy and faster-whisper. Nothing here uses the network, except Whisper downloading its model the first time. Every tool prints its usage when run with no arguments, writes only where you tell it, and never deletes your input.
+Small tools for the agent tier (Claude Code or Codex with the repo cloned). They use ffmpeg, ffprobe, Python 3.12, Pillow, numpy and faster-whisper. Nothing here uses the network, except Whisper downloading its model the first time. Every tool prints its usage when run with no arguments, writes only where you tell it, and never deletes your input.
 
 ## Set up
 
@@ -16,7 +16,7 @@ export STT_PYTHON=~/.local/share/vetted-video/stt/bin/python
 
 Every Python tool below can run under `$STT_PYTHON`. Only `transcribe.py` needs it; the rest work with any python3 that has Pillow (`measure.py` and `cut_silence.py` need no Pillow at all, apart from one optional check).
 
-**Poppins.** The headline font is Poppins ExtraBold (open licence). Download it from Google Fonts (fonts.google.com/specimen/Poppins), unzip, and pass the file as `--font`, for example `~/Fonts/Poppins-ExtraBold.ttf`. Keep it outside the repo. For a quick test any bold TTF works, for example `/System/Library/Fonts/Supplemental/Arial Black.ttf`.
+**Fonts.** The house type is Inter Tight (setup lines, captions, cards) with Instrument Serif Italic for the gold payoff word. Both are open licence (Google Fonts). Download `InterTight[wght].ttf`, `InterTight-Italic[wght].ttf` and `InstrumentSerif-Italic.ttf` from fonts.google.com and put them in `~/.local/share/vetted-video/fonts` (or point `TS_FONT_DIR` at the folder). `brand.py` finds them there. No fonts are kept in this repo. Without Instrument Serif the payoff falls back to Didot Italic on a Mac, then Inter Tight Italic.
 
 ## The tools
 
@@ -32,12 +32,12 @@ python3 cut_silence.py raw.mp4 cut.mp4 --min-silence 0.4 --pad 0.08 --threshold 
 
 **captions_to_overlay.py** - draws one transparent PNG per caption chunk plus `overlay.ffconcat` and `overlay.json`. White text, thin charcoal edge, soft shadow, 2 to 5 words, centred at `--y` (0.62 of the height), at most one gold word per chunk. The gold word comes from `--emphasis` (one word per line), otherwise a number word such as "hundred" or any digit word.
 ```
-$STT_PYTHON captions_to_overlay.py work/transcript.json work/overlay --font ~/Fonts/Poppins-ExtraBold.ttf --emphasis words.txt
+$STT_PYTHON captions_to_overlay.py work/transcript.json work/overlay --font ~/.local/share/vetted-video/fonts/InterTight[wght].ttf --emphasis words.txt
 ```
 
-**burn_captions.py** - runs the step above and composites the result onto the video. Audio is copied. `--max-seconds` renders only the start, for tests.
+**burn_captions.py** - runs the step above and composites the result onto the video. `--style brand` is plain steady captions (the default mode); `--style kinetic` is the experiment: words pop in as spoken and are typeset by role (stressed words larger and gold, numbers larger, one `--big` word in the gold serif); `--style classic` is the old outlined look. Choose the mode by the rules in `skills/3-captions-and-type.md`. Audio is copied. `--max-seconds` renders only the start, for tests.
 ```
-$STT_PYTHON burn_captions.py cut.mp4 work/transcript.json captioned.mp4 --font ~/Fonts/Poppins-ExtraBold.ttf
+$STT_PYTHON burn_captions.py cut.mp4 work/transcript.json captioned.mp4 --font ~/.local/share/vetted-video/fonts/InterTight[wght].ttf --style kinetic --emphasis words.txt --big big.txt
 ```
 Captions go into the whole video, so use a clean version. If the footage already has captions burned in, they will double up.
 
@@ -55,6 +55,16 @@ python3 measure.py master.mp4 --format advice
 ```
 python3 contact_sheet.py master.mp4 sheet.jpg --every 2.5
 ```
+
+
+**brand.py** - the brand values (colours, font loading) the drawing tools share. Values come from the live site (see `IDENTITY.md`).
+
+**brand_cards.py** - draws the on-screen cards as transparent PNGs from a small JSON spec: a static headline with a gold payoff line, a small quiet site address, number cards, and liquid-glass name cards and outro (the picture behind the glass is blurred when the cards are composited). It checks the safe zones and stops if text lands in one.
+```
+$STT_PYTHON brand_cards.py cards.json out_dir
+```
+
+**kinetic_captions.py** - the kinetic caption renderer used by `burn_captions.py --style kinetic`. Words appear as spoken; each is typeset by its role; stress is read from the speaker's delivery (louder and slower than their usual).
 
 ## Typical order
 
@@ -84,11 +94,11 @@ What it writes under `--out` (the script refuses an `--out` inside a git repo, b
 
 Rules it enforces: nothing in the top 220 px, the bottom 380 px (y 1540 and below) or the right 140 px (x 940 and over); the label sits at 72 to 79% of the height, the headline at 20 to 35%, the CTA's bottom edge at y 1500. After writing it re-reads every PNG, checks that the four corners are transparent and that no pixel with alpha above zero lies outside the band, and exits 1 on any failure. Invisible soft-shadow tails (alpha 12 or less) that fall outside the band are cleared; anything stronger fails the run. The clips are motion and may pass through the unsafe zones on purpose (the wipe and the sting cover the frame).
 
-Colours come from IDENTITY: gold F5B533, charcoal 181E2A, off-white F4F1EA (a placeholder to confirm). Purple is not used. Gold appears only on the one headline word, the active tab, the label's topic line, the CTA button and the sting underline.
+(The overlay pack below is the earlier brand v1 look, for the advice and game episodes, and has not been migrated. Colours there: gold F5B533, charcoal 181E2A.) Purple is not used. Gold appears only on the one headline word, the active tab, the label's topic line, the CTA button and the sting underline.
 
 Placeholders and limits:
 - The brand mark is **text only** until the real logo file exists.
-- `--font` takes any heavy TTF; Poppins ExtraBold is the house font once downloaded. The default is Arial Black, then Arial Bold. Arial Black is wide, so headline lines are fitted down in size to stay inside the band (long lines get small).
+- `--font` takes any heavy TTF for the older overlay pack. The default is Arial Black, then Arial Bold. Arial Black is wide, so headline lines are fitted down in size to stay inside the band (long lines get small).
 - Graphics are centred on x 490, the middle of the usable band (60 to 920), not the middle of the frame.
 - Clip sizes: `sting.mov` is about 2.3 MB; the other clips are under 1 MB. The files were checked with ffprobe and by decoding frames. They have **not** been imported into CapCut: every CapCut step in `CAPCUT-HOW-TO.md` is marked `{{NEEDS_VERIFICATION in CapCut}}`.
 - Not in the pack: the game episode's ledger, pick cards and price badges.

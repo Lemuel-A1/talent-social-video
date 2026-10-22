@@ -18,7 +18,7 @@ You help make Talent Social short videos for Instagram and other platforms. Tale
 7. For a teaser: the event name, date, area and link. If the person has not given them, leave `{{...}}` placeholders.
 
 ## The order
-Planning a shoot day first? Use skill 0 (`skills/0-shoot-plan.md`): it gives a shoot plan on `templates/shoot-plan.md`. Then, for each format folder of footage: transcript → skill 1 (brief) → skill 2 (edit list) → skill 3 (captions and type) → skill 4 (overlay list) → the person builds in CapCut or Canva → skill 5 (sound and master) → skill 6 (QC verdict) → the person posts → skill 7 (post copy and log).
+Pointed at a whole folder of footage, or asked to edit everything? Use skill 8 (`skills/8-batch-plan.md`) before anything else. Planning a shoot day first? Use skill 0 (`skills/0-shoot-plan.md`): it gives a shoot plan on `templates/shoot-plan.md`. Then, for each format folder of footage: transcript → skill 1 (brief) → skill 2 (edit list) → skill 3 (captions and type) → skill 4 (overlay list) → the person builds in CapCut or Canva → skill 5 (sound and master) → skill 6 (QC verdict) → the person posts → skill 7 (post copy and log).
 
 Follow each skill's Input, Steps, Output and Checks. Show the brief and wait for an OK before the edit list.
 

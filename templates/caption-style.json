@@ -1,54 +1,158 @@
 {
-  "_note": "The house caption and type style as data. Values come from IDENTITY.md. Tools read --font, --size, --y, --gold from here; chat-tier users copy the values into CapCut or Canva.",
-  "canvas": { "width_px": 1080, "height_px": 1920, "fps": 30 },
+  "_note": "The house caption and type style as data (brand v2, 22 Oct 2026). Values come from IDENTITY.md sections 3 and 4. Tools read the font files from $TS_FONT_DIR or ~/.local/share/vetted-video/fonts; chat-tier users copy the values into CapCut or Canva.",
+  "canvas": {
+    "width_px": 1080,
+    "height_px": 1920,
+    "fps": 30
+  },
   "fonts": {
-    "headline": { "family": "Poppins", "weight": "ExtraBold", "licence": "OFL", "case": "upper" },
-    "captions": { "family": "Poppins", "weight": "{{NEEDS_VERIFICATION}}", "licence": "OFL", "case": "sentence" },
-    "file_path": "{{FONT_PATH}}"
+    "face": {
+      "family": "Inter Tight",
+      "weights": {
+        "normal": 600,
+        "soft": 500,
+        "name": 700,
+        "stress": 800,
+        "number": 900
+      },
+      "licence": "OFL",
+      "source": "Google Fonts"
+    },
+    "payoff": {
+      "family": "Didot Italic (macOS) or Inter Tight Italic",
+      "note": "portable choice, open: a Google serif such as Instrument Serif"
+    },
+    "files": [
+      "InterTight[wght].ttf",
+      "InterTight-Italic[wght].ttf"
+    ]
   },
   "colours": {
-    "gold": "F5B533",
-    "charcoal": "181E2A",
-    "caption_text": "FFFFFF",
-    "off_white": "{{NEEDS_VERIFICATION}}",
+    "page": "131210",
+    "raised": [
+      "191715",
+      "1E1C1A"
+    ],
+    "text": "F6F5F4",
+    "muted": "A9A39E",
+    "gold_cards": "D8B579",
+    "gold_video": "E2B05A",
+    "on_gold": "181410",
     "purple": "only inside the Vetted mark",
-    "status": "gold and charcoal are 'about' values, to confirm in Canva"
+    "source": "talentsocial.network, measured 22 Oct 2026"
   },
   "captions": {
-    "size_px": 64,
-    "size_ratio_of_width": 0.059,
-    "y_position_ratio": 0.62,
-    "y_range_ratio": [0.55, 0.70],
+    "style": "kinetic",
+    "size_px": 62,
+    "y_position_ratio": 0.55,
+    "y_range_ratio": [
+      0.5,
+      0.62
+    ],
     "align": "centre",
-    "text_colour": "FFFFFF",
-    "shadow": "soft, dark, no hard outline",
-    "min_words_per_chunk": 2,
-    "max_words_per_chunk": 5,
-    "max_gold_words_per_chunk": 1,
-    "case": "sentence"
+    "roles": {
+      "normal": {
+        "scale": 1.0
+      },
+      "soft": {
+        "scale": 0.82,
+        "opacity": 0.85
+      },
+      "stress": {
+        "scale": 1.22,
+        "colour": "gold_video",
+        "max_per_phrase": 2
+      },
+      "number": {
+        "scale": 1.5,
+        "colour": "gold_video"
+      },
+      "big": {
+        "scale": 1.9,
+        "face": "payoff",
+        "colour": "gold_video",
+        "own_line": true,
+        "max_per_phrase": 1
+      }
+    },
+    "words_per_phrase": [
+      3,
+      6
+    ],
+    "reveal": "word by word as spoken, short pop",
+    "halo": "soft warm-black glow, no outline",
+    "case": "sentence",
+    "modes": [
+      "none",
+      "plain",
+      "kinetic"
+    ],
+    "default_mode": "plain",
+    "kinetic_status": "experiment from 22 Oct 2026; adopt for rule-5 clips only if it beats plain on watch time in 6 of 8 matched pairs",
+    "clean_master": "always exported"
   },
   "headline": {
-    "y_range_ratio": [0.20, 0.35],
+    "use": "only when the first spoken line is not on screen as captions, or when the framing is editorial",
+    "y_range_ratio": [
+      0.26,
+      0.4
+    ],
     "max_lines": 2,
-    "max_gold_words": 1,
-    "case": "upper",
-    "visible_from_s": 0,
-    "visible_until": "the sting"
+    "plus": "one gold payoff line",
+    "align": "left at 92 px",
+    "case": "sentence"
   },
-  "labels": {
-    "name": { "text_colour": "FFFFFF", "background": "181E2A" },
-    "topic": { "text_colour": "F5B533" },
-    "y_range_ratio": [0.72, 0.79],
-    "show_for_s": 3,
-    "note": "Band sits between the caption band and the bottom safe zone."
+  "cards": {
+    "style": "liquid glass",
+    "name_card": {
+      "name": "Inter Tight 700, fits 64 px",
+      "role": "Inter Tight 600, 26 px, tracked caps, gold_video"
+    },
+    "outro": {
+      "title": "Talent Social",
+      "line": "talentsocial.network",
+      "held_s": 3,
+      "no_date": true
+    },
+    "glass": {
+      "backdrop": "real picture, gaussian blur sigma 22, saturation 1.5, magnified 12%",
+      "tint": "white 52% to 18% top to bottom",
+      "rim": "white top-left to faint bottom-right",
+      "warm_edge": "gold_video bottom-right",
+      "shadow": "soft, offset 12 px"
+    },
+    "left_px": 92,
+    "bottom_max_px": 1440
   },
-  "safe_zones_px": { "top": 220, "bottom": 380, "right": 140 },
-  "usable_area_px": { "x_min": 0, "x_max": 940, "y_min": 220, "y_max": 1540 },
-  "brand_mark": { "text": "Talent Social · powered by Vetted", "corner": "top-left", "y_min_px": 220, "from": "after the sting", "series_bug_below_mark": true },
+  "safe_zones_px": {
+    "top": 220,
+    "right": 140,
+    "bottom_hard": 380,
+    "text_bottom_max_y": 1440
+  },
+  "usable_area_px": {
+    "x_min": 0,
+    "x_max": 940,
+    "y_min": 220,
+    "y_max": 1540
+  },
   "motion": {
-    "punch_in_percent": [10, 15],
-    "punch_in_every_s": [3, 5],
-    "section_transition": "gold band wipe, about 0.3 s, between sections only"
+    "punch_in_percent": [
+      10,
+      15
+    ],
+    "punch_in_every_s": [
+      3,
+      5
+    ],
+    "note": "punch-ins are continuity cuts at sentence boundaries; the audio is not cut"
   },
-  "cta_card": { "held_s": 3, "bottom_edge_max_px": 1540 }
+  "watermark": {
+    "text": "talentsocial.network",
+    "size_px": 22,
+    "opacity": 0.6,
+    "position": "bottom-left, x 92, y 1402",
+    "hide_while": "a glass card is on screen",
+    "note": "No eyebrow or logo near faces (Lemuel, 22 Oct)"
+  }
 }
